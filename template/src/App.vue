@@ -22,6 +22,11 @@
     </div>
 
     <div class="row">
+      <el-button class="item" size="small" @click="changeState">修改状态</el-button>
+      <el-text>状态值：{{ configStore.someVar }}</el-text>
+    </div>
+
+    <div class="row">
       <el-button class="item" size="small" @click="doRequest" :disabled="!inputValue">网络请求</el-button>
       <el-input class="item" size="small" v-model.trim="inputValue" clearable></el-input>
     </div>
@@ -63,6 +68,10 @@ const version = ref("");
 
 const getEvn = () => {
   version.value = import.meta.env.VITE_APP_VERSION
+}
+
+const changeState = () => {
+  configStore.someVar = `新值 ${Date.now().toLocaleString()}`;
 }
 
 const doRequest = async () => {

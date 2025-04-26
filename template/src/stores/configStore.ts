@@ -14,4 +14,8 @@ export const useConfigStore = defineStore("config", () => {
         someNum,
         someFunc
     };
+}, {
+    persist: {
+        pick: ["someVar"]
+    }
 })

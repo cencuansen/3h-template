@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
-const { program } = require('commander');
+const {execSync} = require('child_process');
+const {program} = require('commander');
 const pkg = require('../package.json');
 
 program
@@ -14,7 +14,7 @@ program
     .parse(process.argv);
 
 const options = program.opts();
-const projectName = program.args[0];
+let projectName = program.args[0];
 
 if (!projectName) {
     program.outputHelp();
@@ -22,9 +22,15 @@ if (!projectName) {
     process.exit(1);
 }
 
+const isDot = projectName === "."
+
+if (isDot) {
+    projectName = process.cwd().split(path.sep).pop();
+}
+
 // 获取参数
 const templateDir = path.join(__dirname, '../template');
-const targetDir = path.join(process.cwd(), projectName);
+const targetDir = isDot ? process.cwd() : path.join(process.cwd(), projectName);
 
 // 复制模板
 function copyDir(src, dest) {
@@ -71,7 +77,7 @@ async function main() {
         // 安装依赖
         // execSync('npm install', {stdio: 'inherit'});
 
-        console.log(`cd ${targetDir}`);
+        console.log(`cd ${ targetDir }`);
         console.log(`npm install`);
         console.log(`npm run dev`);
     } catch (error) {
