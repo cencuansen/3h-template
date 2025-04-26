@@ -1,5 +1,5 @@
 ```
-npm i 3h-template
+npm i 3h-template -g
 ```
 
 ```
