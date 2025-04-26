@@ -1,0 +1,21 @@
+{
+  "name": "3h-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "bin": {
+    "3h-template": "./bin/create.js",
+    "create-3h-template": "./bin/create.js"
+  },
+  "files": [
+    "template",
+    "bin"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
+}
